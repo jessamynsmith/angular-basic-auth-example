@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('angularBasicAuthExample.login', ['ngRoute', 'ngMessages', 'angularBasicAuthExample.user'])
+angular.module('angularBasicAuthExample.login',
+  ['ngRoute', 'ngMessages', 'ngNotify', 'angularBasicAuthExample.user'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/login', {
@@ -9,17 +10,17 @@ angular.module('angularBasicAuthExample.login', ['ngRoute', 'ngMessages', 'angul
     });
   }])
 
-  .controller('LoginCtrl', ['$scope', 'User',
-    function($scope, User) {
+  .controller('LoginCtrl', ['$scope', 'ngNotify', 'User',
+    function($scope, ngNotify, User) {
 
       $scope.params = {};
 
       $scope.login = function(username, password) {
         User.login(username, password).then(function(data) {
-          console.log("Logged in successfully");
+          ngNotify.set(data.data, {duration: 2500});
           console.log(data);
         }, function(error) {
-          console.log("Unable to login");
+          ngNotify.set(error.data, {type: 'error', duration: 2500});
           console.log(error);
         });
       };

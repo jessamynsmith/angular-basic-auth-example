@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link href="bower_components/ng-notify/dist/ng-notify.min.css" rel="stylesheet" type="text/css">
   <style>
     [ng-cloak] {
       display: none;
@@ -29,9 +30,13 @@
     // load all of the dependencies asynchronously.
     $script([
       'bower_components/angular/angular.js',
+      'bower_components/angular-messages/angular-messages.js',
       'bower_components/angular-route/angular-route.js',
+      'bower_components/ng-notify/src/scripts/ng-notify.js',
       'app.js',
-      'login/login.js'
+      'login/login.js',
+      'services/constants.js',
+      'services/user.js'
     ], function() {
       // when all is done, execute bootstrap angular application
       angular.bootstrap(document, ['angularBasicAuthExample']);
