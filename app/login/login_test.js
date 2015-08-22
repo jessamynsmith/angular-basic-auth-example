@@ -5,6 +5,7 @@ describe('angularBasicAuthExample.login module', function() {
 
   // Mock unavailable modules
   angular.module('ngMessages', []);
+  angular.module('ngNotify', []);
   angular.module('angularBasicAuthExample.user', []);
 
   beforeEach(module('angularBasicAuthExample.login'));
@@ -15,6 +16,7 @@ describe('angularBasicAuthExample.login module', function() {
       var user = {login: function() {}};
       var parameters = {
         $scope: scope,
+        ngNotify: null,
         User: user
       };
       var loginCtrl = $controller('LoginCtrl', parameters);
